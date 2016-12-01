@@ -437,23 +437,18 @@ for time in freeTime[1:]:
 
 print tempCurr.time, "\t\t", int(tempCurr.rate),"\t\t", tempCurr.finalMplace,"\t\t", int(tempCurr.distances[tempCurr.finalMplace]), "\t\t", tempTotal
 print "\nRECOMMENDED TIME AND PLACE\n"
-print tempCurr.time, ' : ',tempCurr.finalMplace#score_place[tempTime].keys()[0]
+print tempCurr.time, ' : ',tempCurr.finalMplace
 
-members = []
 print "Attendees: ",
 for person in tempCurr.attendees:
-    members.append(person.name)
     print person.name,
-
+print "\n\n",
 
 t = timeSlot.index(tempCurr.time)
 
 up_map = model.UndirectedGraph(up_edges)
 up_map.locations = up_bldgs
-
 search = True
-print "\n\n"
-print members
 
 if __name__ == '__main__':
     user, src, dest = None, None, None
@@ -472,6 +467,8 @@ if __name__ == '__main__':
     if search and user_found:
         dest = tempCurr.finalMplace
 
+        welcome = "WELCOME TO MeetUP!"
+        canvas.create_text(220, 180, text=welcome, anchor="e", fill=BLACK, justify = "center")
         message = "Hi, %s! \nYour meeting is at %s to be held at %s. \nYou will be coming from %s." % (user, tempCurr.time, up_names[dest], up_names[src])
         canvas.create_text(265, 300, text=message, anchor="e", fill=BLACK, justify="center", width=250)
 
