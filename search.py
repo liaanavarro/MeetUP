@@ -31,7 +31,7 @@ cd = os.path.dirname(os.path.realpath(__file__))
 p = os.path.join('UPD_Map.gif')
 
 root = Tk.Tk()
-root.resizable(width=False, height=False)
+root.resizable(width=True, height=True)
 
 bg_image = Tk.PhotoImage(file=p)
 w_width, w_height = bg_image.width()-5, bg_image.height()
@@ -362,7 +362,7 @@ for time in freeTime:
 	time.getDistance(timeSlot)
 for time in freeTime:
 	time.findFinalMplace()
-print "Meeting Time\t\tTime Rating\t\tMeeting Place\t\tAverage Distance To Place\t\tPoints"
+# print "Meeting Time\t\tTime Rating\t\tMeeting Place\t\tAverage Distance To Place\t\tPoints"
 curr1 = freeTime[0]
 currDistToPlace1 = freeTime[0].distances[time.finalMplace]
 maxSoFar = 0
@@ -422,7 +422,7 @@ for time in freeTime[1:]:
 	maxSoFar = max(total1, total2)
 
 	if maxSoFar == total2:
-		print curr1.time, "\t\t", int(curr1.rate),"\t\t", curr1.finalMplace,"\t\t", int(curr1.distances[curr1.finalMplace]), "\t\t", total1
+		# print curr1.time, "\t\t", int(curr1.rate),"\t\t", curr1.finalMplace,"\t\t", int(curr1.distances[curr1.finalMplace]), "\t\t", total1
 		curr1 = curr2
 		currDistToPlace1 = currDistToPlace2
 		tempDistToPlace = currDistToPlace2
@@ -430,16 +430,16 @@ for time in freeTime[1:]:
 		tempTotal = total2
 
 	else:
-		print curr2.time, "\t\t", int(curr2.rate),"\t\t", curr2.finalMplace,"\t\t", int(curr2.distances[curr2.finalMplace]), "\t\t", total2
+		# print curr2.time, "\t\t", int(curr2.rate),"\t\t", curr2.finalMplace,"\t\t", int(curr2.distances[curr2.finalMplace]), "\t\t", total2
 		tempDistToPlace = currDistToPlace1
 		tempCurr = curr1
 		tempTotal = total1
 
-print tempCurr.time, "\t\t", int(tempCurr.rate),"\t\t", tempCurr.finalMplace,"\t\t", int(tempCurr.distances[tempCurr.finalMplace]), "\t\t", tempTotal
-print "\nRECOMMENDED TIME AND PLACE\n"
+# print tempCurr.time, "\t\t", int(tempCurr.rate),"\t\t", tempCurr.finalMplace,"\t\t", int(tempCurr.distances[tempCurr.finalMplace]), "\t\t", tempTotal
+# print "\nRECOMMENDED TIME AND PLACE\n"
 print tempCurr.time, ' : ',tempCurr.finalMplace
 
-print "Attendees: ",
+# print "Attendees: ",
 for person in tempCurr.attendees:
     print person.name,
 print "\n\n",
@@ -508,7 +508,7 @@ if __name__ == '__main__':
         canvas.delete(item)
         canvas.create_oval(x0, y0, x1, y1, fill=BLUE, outline=BLUE)
 
-    root.wm_title("UP Map")
+    root.wm_title("MeetUP")
     root.state('zoomed')
     w,h = root.winfo_screenwidth(), root.winfo_screenheight()
     root.geometry('%dx%d+%d+%d' % (w, h, -w, 0))
